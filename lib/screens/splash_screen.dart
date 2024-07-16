@@ -54,8 +54,8 @@ class _SplashscreenState extends State<Splashscreen> with SingleTickerProviderSt
           children: [
             Image.asset(
               'assets/images/full_logo.png',
-              width: 400,
-              height: 400,
+              width: 300,
+              height: 300,
             )
           ],
         ),  

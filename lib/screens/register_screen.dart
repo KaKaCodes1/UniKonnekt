@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unikonnect/screens/login_screen.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -40,149 +41,150 @@ class _RegisterState extends State<Register> {
           // height: double.infinity,
           decoration: const BoxDecoration(
             color:  Color(0xff38b6ff),
-            // gradient: RadialGradient(
-            //   center: FractionalOffset(0.5, 0.5),
-            //   focal: FractionalOffset(0.5, 0.5),
-            //   colors: [Color(0xffffe677), Color(0xff38b6ff)],
-            //   stops: [0.3, 1],
-            //   radius: 0.5,
-            // )
             ),
             child: Column(
               children: [        
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 236, 229, 209),
-                  ),
-                  width: 348,
-                  
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Center(
-                          child: Image.asset(
-                            'assets/images/small_logo.png',
-                            width: 180,
-                            height: 180,
-                          ),
-                        ),
-
-                        const SizedBox(
-                          height: 5,
-                        ),
-
-                        inputField(
-                          label: 'Full Name',
-                          hintText: 'Enter Your Full Name',
-                          onChanged: (value) {
-                            fullName = value;
-                          },
-                        ),
-
-                        inputField(
-                          label: 'Username',
-                          hintText: 'Enter Your Username',
-                          onChanged: (value) {
-                            username = value;
-                          },
-                        ),
-
-                        inputField(
-                          label: 'Email',
-                          hintText: 'Enter Your Email',
-                          onChanged: (value) {
-                            email = value;
-                          },
-                        ),
-
-                        inputField(
-                          label: 'Password',
-                          hintText: 'Enter Your Password',
-                          obscureText: obscureText,
-                          onChanged: (value) {
-                            setState(() {
-                              password = value;
-                            });
-                          },
-                          onTap: () {
-                            setState(() {
-                              obscureText = !obscureText;
-                            });
-                          },
-                        ),
-                        
-                        inputField(
-                          label: 'Location',
-                          hintText: 'Enter Your Location',
-                          onChanged: (value) {
-                            location = value;
-                          },
-                        ),
-                        inputField(
-                          label: 'Date of Birth',
-                          hintText: 'Enter Your Date of Birth',
-                          controller: _dateController,
-                          onChanged: (value) {
-                            dateOfBirth = value;
-                          },
-                          onTap: () async {
-                            DateTime? pickedDate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime(2100),
-                            );
-                            if (pickedDate != null) {
-                              setState(() {
-                                dateOfBirth =
-                                    "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-                                _dateController.text = dateOfBirth;
-                              });
-                            }
-                          },
-                        ),
-                        ElevatedButton(
-                          onPressed: (){}, 
-                          style:ElevatedButton.styleFrom(
-                            minimumSize: const Size(200, 40),
-                            backgroundColor: Colors.deepOrange,
-                          ),
-                          child: const Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: const Color.fromARGB(255, 239, 230, 230),
+                    ),
+                    width: 348,
+                    
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Center(
+                            child: Image.asset(
+                              'assets/images/small_logo.png',
+                              width: 180,
+                              height: 180,
                             ),
                           ),
+                  
+                          const SizedBox(
+                            height: 5,
                           ),
-
-                        const SizedBox(height: 10,),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('Already have an account? '),
-                            GestureDetector(
-                              onTap: () {
-                              },
-                              child: const Text(
-                                'Log In!',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.deepOrange,
-                                ),
+                  
+                          inputField(
+                            label: 'Full Name',
+                            hintText: 'Enter Your Full Name',
+                            onChanged: (value) {
+                              fullName = value;
+                            },
+                          ),
+                  
+                          inputField(
+                            label: 'Username',
+                            hintText: 'Enter Your Username',
+                            onChanged: (value) {
+                              username = value;
+                            },
+                          ),
+                  
+                          inputField(
+                            label: 'Email',
+                            hintText: 'Enter Your Email',
+                            onChanged: (value) {
+                              email = value;
+                            },
+                          ),
+                  
+                          inputField(
+                            label: 'Password',
+                            hintText: 'Enter Your Password',
+                            obscureText: obscureText,
+                            onChanged: (value) {
+                              setState(() {
+                                password = value;
+                              });
+                            },
+                            onTap: () {
+                              setState(() {
+                                obscureText = !obscureText;
+                              });
+                            },
+                          ),
+                          
+                          inputField(
+                            label: 'Location',
+                            hintText: 'Enter Your Location',
+                            onChanged: (value) {
+                              location = value;
+                            },
+                          ),
+                          inputField(
+                            label: 'Date of Birth',
+                            hintText: 'Enter Your Date of Birth',
+                            controller: _dateController,
+                            onChanged: (value) {
+                              dateOfBirth = value;
+                            },
+                            onTap: () async {
+                              DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100),
+                              );
+                              if (pickedDate != null) {
+                                setState(() {
+                                  dateOfBirth =
+                                      "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                                  _dateController.text = dateOfBirth;
+                                });
+                              }
+                            },
+                          ),
+                          ElevatedButton(
+                            onPressed: (){}, 
+                            style:ElevatedButton.styleFrom(
+                              minimumSize: const Size(200, 40),
+                              backgroundColor: Colors.deepOrange,
+                            ),
+                            child: const Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                  
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                            ),
                   
+                          const SizedBox(height: 10,),
+                  
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text('Already have an account? '),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const LoginScreen(),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  'Log In!',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.deepOrange,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    
+                  ),
                 )
         
         

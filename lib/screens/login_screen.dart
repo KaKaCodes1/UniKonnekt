@@ -30,107 +30,104 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
 
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            color:  Color(0xff38b6ff),
-          ),
-          child: Column(
-            children: [
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: const Color.fromARGB(255, 239, 230, 230),
-                  ),
-                  width: 348,
-                  height: MediaQuery.of(context).size.height,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          color:  Color(0xff38b6ff),
+        ),
+        child: Center(
+          child: IntrinsicHeight(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color.fromARGB(255, 239, 230, 230),
+              ),
+              width: 348,
+              // height: MediaQuery.of(context).size.height,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/images/small_logo.png',
+                        width: 200,
+                        height: 200,
+                      ),
+                    ),
+                    inputField(
+                      label: 'Email',
+                      hintText: 'Enter Your Email',
+                      onChanged: (value) {
+                        email = value;
+                      },
+                    ),
+                    inputField(
+                      label: 'Password',
+                      hintText: 'Enter Your Password',
+                      obscureText: obscureText,
+                      onChanged: (value) {
+                        setState(() {
+                          password = value;
+                        });
+                      },
+                      onTap: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                    ),
+            
+                    ElevatedButton(
+                      onPressed: (){}, 
+                      style:ElevatedButton.styleFrom(
+                        minimumSize: const Size(200, 40),
+                        backgroundColor: Colors.deepOrange,
+                      ),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+              
+                    const SizedBox(height: 10,), 
+            
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Center(
-                          child: Image.asset(
-                            'assets/images/small_logo.png',
-                            width: 180,
-                            height: 180,
-                          ),
-                        ),
-                        inputField(
-                          label: 'Email',
-                          hintText: 'Enter Your Email',
-                          onChanged: (value) {
-                            email = value;
-                          },
-                        ),
-                        inputField(
-                          label: 'Password',
-                          hintText: 'Enter Your Password',
-                          obscureText: obscureText,
-                          onChanged: (value) {
-                            setState(() {
-                              password = value;
-                            });
-                          },
+                        const Text("Don't have an account? "),
+                        GestureDetector(
                           onTap: () {
-                            setState(() {
-                              obscureText = !obscureText;
-                            });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Register(),
+                              ),
+                            );
                           },
-                        ),
-
-                        ElevatedButton(
-                          onPressed: (){}, 
-                          style:ElevatedButton.styleFrom(
-                            minimumSize: const Size(200, 40),
-                            backgroundColor: Colors.deepOrange,
-                          ),
                           child: const Text(
-                            'Sign Up',
+                            'Sign Up!',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                
+                              color: Colors.deepOrange,
                             ),
                           ),
                         ),
-                  
-                        const SizedBox(height: 10,), 
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text("Don't have an account? "),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Register(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Sign Up!',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.deepOrange,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),                                         
-                      ]
-                    ),
-                  ),      
-                ),//cont
-              ),
-            ],
-          ),           
-        ),
+                      ],
+                    ),                                         
+                  ]
+                ),
+              ),      
+            ),
+          ),//cont
+        ),           
       ),
     );
   }
@@ -148,7 +145,7 @@ Widget inputField({
         Text(
           label,
           style: const TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
         ),
         const SizedBox(
           height: 5,

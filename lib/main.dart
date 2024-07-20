@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unikonnect/screens/register_screen.dart';
+import 'package:unikonnect/screens/home_screen.dart';
+// import 'package:unikonnect/screens/register_screen.dart';
 // import 'package:unikonnect/screens/splash_screen.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const Splashscreen(),
-      home: const Register(),
+      // home: const Register(),
+      home: const HomeScreen(),
     );
   }
 }

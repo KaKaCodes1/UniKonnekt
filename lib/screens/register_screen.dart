@@ -150,7 +150,7 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
-                  
+                                fontSize: 20,
                               ),
                             ),
                             ),
@@ -208,7 +208,7 @@ class _RegisterState extends State<Register> {
         Text(
           label,
           style: const TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
         ),
         const SizedBox(
           height: 5,

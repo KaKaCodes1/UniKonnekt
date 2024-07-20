@@ -9,7 +9,7 @@ class ImageInSlider extends StatelessWidget {
     this.width,
     this.height,
     this.applyImageRadius = true,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.fill,
     this.backgroundColor = Colors.white10,
     this.isNetworkImage = false,
     required this.imageUrl,
@@ -31,7 +31,7 @@ class ImageInSlider extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: width,
+        width: 450,
         height: height,
         padding: padding,
         decoration: BoxDecoration(

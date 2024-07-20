@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../widgets/image_in_slider.dart';
+import '../widgets/ads_slider.dart';
+// import 'package:carousel_slider/carousel_slider.dart';
+// import '../widgets/image_in_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -64,14 +65,37 @@ class HomeScreen extends StatelessWidget {
               
               const SizedBox(height: 10,),
 
-              Padding(
-                padding: const EdgeInsets.all(13.0),
-                child: ImageInSlider(imageUrl: 'assets/images/mentalhealth.jpeg',),
+              //This contains my image sliders
+              const Padding(
+                padding: EdgeInsets.all(13.0),
+                child: AdsSlider(),
               ),
+
+              const Row(
+                children: [
+                  FeaturesIcon(),
+                ],
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class FeaturesIcon extends StatelessWidget {
+  const FeaturesIcon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        CircleAvatar(),
+        Text('')
+      ],
     );
   }
 }

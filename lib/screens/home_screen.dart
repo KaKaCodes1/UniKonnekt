@@ -3,12 +3,23 @@ import 'package:flutter/material.dart';
 
 import '../model/post.dart';
 import '../widgets/ads_slider.dart';
+import '../widgets/bottomnavbar.dart';
+import '../widgets/drawer_menu.dart';
 import '../widgets/post_item.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import '../widgets/image_in_slider.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+    /*A GlobalKey<ScaffoldState> is used to control the Scaffold. 
+  This key allows you to access and manipulate the state of the Scaffold, including opening and closing the drawer.*/
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<Post> posts = [
     Post(
@@ -32,6 +43,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: const DrawerMenu(),
       backgroundColor: const Color.fromARGB(255, 239, 230, 230),
       body: SafeArea(
         child: ListView(
@@ -47,10 +60,15 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('assets/images/me.jpg'),
-                                   
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState?.openDrawer();
+                    },
+                    child: const CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/images/me.jpg'),
+                                     
+                    ),
                   ),
               
                   SizedBox(
@@ -127,87 +145,44 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       
-      bottomNavigationBar: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            blurRadius: 25,
-          )
-          ]
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: BottomNavigationBar(
-            selectedItemColor:Colors.deepOrange,
-            unselectedItemColor:  Colors.black,
-            showSelectedLabels: true,
-            showUnselectedLabels: false,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home'
-                ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.people),
-                label: 'Network',
-                ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add_box_rounded),
-                label: 'Post',
-                ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.notifications),
-                label: 'Notifications',
-                ),  
-              BottomNavigationBarItem(
-                icon: Icon(Icons.event),
-                label: 'Events',
-                ),          
-            ],
-
-          // currentIndex: currentIndex,
-          // onTap: onTap,
-            ),
-        ),
-
-
-      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
 
 
 
-class FeaturesIcon extends StatelessWidget {
-  const FeaturesIcon({
-    super.key, 
-    required this.title, 
-    required this.imageUrl,
-  });
-  final String title;
-  final String imageUrl;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 25.0),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage(imageUrl),
-          ),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 10,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
+
+
+// class FeaturesIcon extends StatelessWidget {
+//   const FeaturesIcon({
+//     super.key, 
+//     required this.title, 
+//     required this.imageUrl,
+//   });
+//   final String title;
+//   final String imageUrl;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(right: 25.0),
+//       child: Column(
+//         children: [
+//           CircleAvatar(
+//             radius: 30,
+//             backgroundImage: AssetImage(imageUrl),
+//           ),
+//           Text(
+//             title,
+//             style: const TextStyle(
+//               fontSize: 10,
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
 

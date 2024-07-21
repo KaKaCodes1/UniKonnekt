@@ -38,7 +38,7 @@ class PostItem extends StatelessWidget {
         ),
         const SizedBox(height: 10,),
         if (post.postText != null)
-        Text(post.postText!),
+        Text(post.postText!, style: const TextStyle(fontSize: 15),),
             
         const SizedBox(height: 10,),
 
@@ -66,7 +66,7 @@ class PostItem extends StatelessWidget {
           ],
         ),
             
-        const SizedBox(height: 10,),
+        const SizedBox(height: 16,),
       ],
     );
   }

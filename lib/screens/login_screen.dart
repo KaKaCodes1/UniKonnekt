@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unikonnect/screens/home_screen.dart';
 import 'package:unikonnect/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -82,7 +83,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
             
                     ElevatedButton(
-                      onPressed: (){}, 
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HomeScreen())
+                        );
+                      }, 
                       style:ElevatedButton.styleFrom(
                         minimumSize: const Size(200, 40),
                         backgroundColor: Colors.deepOrange,

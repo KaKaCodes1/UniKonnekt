@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unikonnect/screens/login_screen.dart';
 
+import 'home_screen.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -140,7 +142,12 @@ class _RegisterState extends State<Register> {
                             },
                           ),
                           ElevatedButton(
-                            onPressed: (){}, 
+                            onPressed: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const HomeScreen())
+                              );
+                            }, 
                             style:ElevatedButton.styleFrom(
                               minimumSize: const Size(200, 40),
                               backgroundColor: Colors.deepOrange,
